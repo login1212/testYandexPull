@@ -9,6 +9,7 @@ module.exports = {
         addInComprasionProduct: 'div[class="n-snippet-cell2__toolbar"]>div>div',
         transitionInComprasionProduct: 'div[class="popup-informer__controls"] a',
         listComprasionProduct: 'div[class="n-compare-content__line i-bem n-compare-content__line_js_inited"]>div',
+        deleteListComprasion: 'div[class="n-compare-toolbar__action"]',
     },
     changeLocationRegionMarket(){
 

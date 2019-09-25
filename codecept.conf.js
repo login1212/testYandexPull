@@ -1,13 +1,17 @@
 exports.config = {
     tests: './test.js',
     output: './output',
-    windowSize: "1366x768",
-    browser: 'Chrome',
     helpers: {
         Puppeteer: {
             url: 'https://yandex.by',
             show: true,
-        }
+            browser: "chrome",
+            desiredCapabilities: {
+                chromeOptions: {
+                    "args": [ "--headless", "--disable-gpu", "--window-size=800,600" ]
+                }
+            },
+        },
     },
     include: {
         I: './steps_file.js',
