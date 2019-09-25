@@ -4,9 +4,7 @@ Feature('Яндекс почта-логаун');
 Scenario('Логаут', async () => {
     I.amOnPage('/');
     I.click(MainPage.globalElements.buttonMail);
-    await LoginPage.LoginYandexMail(LoginPage.GlobalAuthorizationData.trueLogin);
-    await LoginPage.PressButtonLogInMail();
-    await LoginPage.PasswordYandexMail(LoginPage.GlobalAuthorizationData.falsePassword);
-    await LoginPage.PressButtonLogInMail();
+    await LoginPage.LoginYandexMail(LoginPage.GlobalData.trueLogin);
+    await LoginPage.PasswordYandexMail(LoginPage.GlobalData.falsePassword);
     I.see('Неверный пароль', LoginPage.GlobalElementsLoginPage.errorMessage);
 });

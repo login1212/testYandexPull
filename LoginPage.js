@@ -1,11 +1,13 @@
 const {I, MailPage} = inject();
 
 module.exports = {
-    GlobalAuthorizationData: {
+    GlobalData: {
         trueLogin: 'AutotestUser',
         truePassword: 'AutotestUser123',
         falseLogin: 'NoAutotestUser',
-        falsePassword: 'NoAutotestUser123'
+        falsePassword: 'NoAutotestUser123',
+        errorLogin: 'Такого аккаунта нет',
+        errorPassword: 'Неверный пароль',
     },
     GlobalElementsLoginPage: {
         inputLoginMail: 'input[id="passp-field-login"]',
@@ -14,16 +16,16 @@ module.exports = {
         mailUserName: 'div[class="mail-User-Name"]',
         errorMessage: 'div[class="passp-form-field__error"]',
     },
-   LoginYandexMail(login) {
+    LoginYandexMail(login) {
         I.waitForNavigation(this.GlobalElementsLoginPage.inputLoginMail);
         I.fillField(this.GlobalElementsLoginPage.inputLoginMail, login);
-   },
-   PasswordYandexMail(password){
-       I.waitForNavigation(this.GlobalElementsLoginPage.inputPasswordMail);
-       I.fillField(this.GlobalElementsLoginPage.inputPasswordMail, password);
-   },
-   PressButtonLogInMail(){
         I.waitForVisible(this.GlobalElementsLoginPage.buttonLogInMail, 20);
         I.click(this.GlobalElementsLoginPage.buttonLogInMail);
-   },
+    },
+    PasswordYandexMail(password) {
+        I.waitForNavigation(this.GlobalElementsLoginPage.inputPasswordMail);
+        I.fillField(this.GlobalElementsLoginPage.inputPasswordMail, password);
+        I.waitForVisible(this.GlobalElementsLoginPage.buttonLogInMail, 20);
+        I.click(this.GlobalElementsLoginPage.buttonLogInMail);
+    },
 };
