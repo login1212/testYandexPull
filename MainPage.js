@@ -15,19 +15,19 @@ module.exports = {
         linkAddLanguage: 'a[data-statlog="head.lang.more"]',
         linkSearchYandex: 'div[class="service service_name_search"]>a',
         linkVideo: 'a[data-id="video"]',
-        UrlVideo: 'https://yandex.by/portal/video?from=morda&stream_channel=1550142789&stream_active=category&stream_category=film',
+        UrlVideo: 'https://yandex.ru/portal/video?from=morda&stream_channel=1550142789&stream_active=category&stream_category=film',
         linkImages: 'a[data-id="images"]',
-        UrlImages: 'https://yandex.by/images/',
+        UrlImages: 'https://yandex.ru/images/',
         linkNews: 'a[data-id="news"]',
-        UrlNews: 'https://yandex.by/news/',
+        UrlNews: 'https://yandex.ru/news/',
         linkMaps: 'a[data-id="maps"]',
-        UrlMaps: 'https://yandex.by/maps/157/minsk/?ll=27.607936%2C53.908126&z=11.4',
+        UrlMaps: 'https://yandex.ru/maps/49/penza/?ll=45.018316%2C53.195063&z=12',
         linkMarket: 'a[data-id="market"]',
-        UrlMarket: 'https://market.yandex.by/?clid=505&utm_source=face_abovesearch&utm_campaign=face_abovesearch',
+        UrlMarket: 'https://market.yandex.ru/?clid=505&utm_source=face_abovesearch&utm_campaign=face_abovesearch',
         linkTranslate: 'a[data-id="translate"]',
-        UrlTranslate: 'https://translate.yandex.by/',
+        UrlTranslate: 'https://translate.yandex.ru/',
         linkMusic: 'a[data-id="music"]',
-        UrlMusic: 'https://music.yandex.by/home',
+        UrlMusic: 'https://music.yandex.ru/home',
     },
     setLocationPage(LocationCity) {
         I.click(this.globalElements.buttonLocation);
@@ -53,13 +53,18 @@ module.exports = {
             }
         }
     },
-    CheckNavigation(Link, Url) {
-        I.click(Link);
-        // I.switchToNextTab(2);
-        // I.seeInCurrentUrl(Url);
-        //I.pressKey(['Control', 'Tab']);
-        I.waitForVisible(this.globalElements.linkSearchYandex, 30);
-        I.click(this.globalElements.linkSearchYandex);
+    async CheckNavigation(Link, Url) {
+        //I.click(Link);
+        // let address = window.location.href;
+        // if (address == Url) {
+        //     console.log(true);
+        // } else {
+        //     throw address;
+        // }
+        let rez = await I.grabAttributeFrom(Link, 'href');
+        if (rez == Url) {
+            console.log(true);
+        }
     },
     AddLanguage() {
         I.waitForVisible(this.globalElements.linkSwitchLanguage, 20);

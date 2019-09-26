@@ -1,7 +1,7 @@
 const {I, LoginPage, MainPage, MailPage} = inject();
 Feature('Яндекс почта-логаут');
 
-Scenario.only('Логаут', async () => {
+Scenario('Логаут', async () => {
     I.amOnPage('/');
     I.click(MainPage.globalElements.buttonMail);
     await LoginPage.LoginYandexMail(LoginPage.GlobalData.trueLogin);

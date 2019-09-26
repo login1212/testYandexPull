@@ -1,10 +1,9 @@
 const {I, MainPage, LanguagePage} = inject();
-Feature('Яндекс почта-логаун');
+Feature('Смена языка');
 
-Scenario('Логаут', async () => {
-    I.amOnPage('/');
+Scenario('Смена языка', async () => {
+    I.amOnPage('https://yandex.by');
     await MainPage.AddLanguage();
     await LanguagePage.ChangeLanguage(LanguagePage.GlobalElements.SelectEnglishList);
     await MainPage.AddLanguage();
-    I.see(LanguagePage.GlobalElements.titlePage);
 });

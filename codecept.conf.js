@@ -1,15 +1,24 @@
 exports.config = {
-    tests: './test.js',
+    tests: './*.yandex.js',
     output: './output',
     helpers: {
         Puppeteer: {
-            url: 'https://yandex.by',
+            url: 'https://yandex.ru',
+            browser: 'chrome',
+            //restart: true,
+            windowSize: '1366x768',
             show: true,
-            browser: "chrome",
-            desiredCapabilities: {
-                chromeOptions: {
-                    "args": [ "--headless", "--disable-gpu", "--window-size=800,600" ]
-                }
+            waitForTimeout: 50000,
+            chrome: {
+                "args":[
+                    'disable-infobars=true',
+                    'safebrowsing-disable-download-protection',
+                    '--disable-impl-side-painting',
+                    '--disable-gpu',
+                    '--ignore-certificate-errors',
+                    //'--headless',
+                    '--no-sandbox',
+                    '--start-maximized']
             },
         },
     },

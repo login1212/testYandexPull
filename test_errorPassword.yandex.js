@@ -1,7 +1,7 @@
 const {I, MainPage, LoginPage} = inject();
-Feature('Яндекс почта-логаун');
+Feature('Проверка вывода ошибки об неверном пароле');
 
-Scenario('Логаут', async () => {
+Scenario('Проверка вывода ошибки об неверном пароле', async () => {
     I.amOnPage('/');
     I.click(MainPage.globalElements.buttonMail);
     await LoginPage.LoginYandexMail(LoginPage.GlobalData.trueLogin);
