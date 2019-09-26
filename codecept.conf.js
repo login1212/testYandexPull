@@ -15,7 +15,7 @@ exports.config = {
                     '--disable-impl-side-painting',
                     '--disable-gpu',
                     '--ignore-certificate-errors',
-                    '--headless',
+                    //'--headless',
                     '--no-sandbox',
                     '--start-maximized']
             },

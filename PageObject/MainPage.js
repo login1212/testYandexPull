@@ -13,21 +13,21 @@ module.exports = {
         buttonMail: 'a[data-statlog="notifications.mail.logout.domik.login.big"]',
         linkSwitchLanguage: 'a[title="Выбрать язык"]',
         linkAddLanguage: 'a[data-statlog="head.lang.more"]',
-        linkSearchYandex: 'div[class="service service_name_search"]>a',
+        linkSearchYandex: 'a[class="logo logo_type_link logo_name_ys-ru-86x35"]',
         linkVideo: 'a[data-id="video"]',
-        UrlVideo: 'https://yandex.ru/portal/video?from=morda&stream_channel=1550142789&stream_active=category&stream_category=film',
+        UrlVideo: 'https://yandex.ru/portal/video?stream_active=category&stream_channel=default&stream_category=film&from_block=video-tabs&from=morda',
         linkImages: 'a[data-id="images"]',
         UrlImages: 'https://yandex.ru/images/',
         linkNews: 'a[data-id="news"]',
-        UrlNews: 'https://yandex.ru/news/',
+        UrlNews: 'https://news.yandex.ru/',
         linkMaps: 'a[data-id="maps"]',
-        UrlMaps: 'https://yandex.ru/maps/49/penza/?ll=45.018316%2C53.195063&z=12',
+        UrlMaps: 'https://yandex.ru/maps',
         linkMarket: 'a[data-id="market"]',
         UrlMarket: 'https://market.yandex.ru/?clid=505&utm_source=face_abovesearch&utm_campaign=face_abovesearch',
         linkTranslate: 'a[data-id="translate"]',
         UrlTranslate: 'https://translate.yandex.ru/',
         linkMusic: 'a[data-id="music"]',
-        UrlMusic: 'https://music.yandex.ru/home',
+        UrlMusic: 'https://music.yandex.ru/',
     },
     setLocationPage(LocationCity) {
         I.click(this.globalElements.buttonLocation);
@@ -42,29 +42,23 @@ module.exports = {
         return await I.grabTextFrom(this.globalElements.MenuItemYet);
     },
 
-    ComparisonArray(arrayMenuItemsYetLondon, arrayMenuItemsYetParis) {
+   async ComparisonArray(arrayMenuItemsYetLondon, arrayMenuItemsYetParis) {
         for (let i = 0; i < arrayMenuItemsYetLondon.length; i++) {
             if (arrayMenuItemsYetLondon[i] === arrayMenuItemsYetParis[i]) {
                 if (arrayMenuItemsYetParis.length === i) {
-                    console.log(true);
+                    await console.log('Успешно');
                 }
             } else {
-                console.log(false);
+                throw arrayMenuItemsYetLondon;
             }
         }
     },
     async CheckNavigation(Link, Url) {
-        //I.click(Link);
-        // let address = window.location.href;
-        // if (address == Url) {
-        //     console.log(true);
-        // } else {
-        //     throw address;
-        // }
-        let rez = await I.grabAttributeFrom(Link, 'href');
-        if (rez == Url) {
-            console.log(true);
+        if (await I.grabAttributeFrom(Link, 'href') === Url)
+        {
+            await console.log('Успешно');
         }
+        else throw Url;
     },
     AddLanguage() {
         I.waitForVisible(this.globalElements.linkSwitchLanguage, 20);

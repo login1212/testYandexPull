@@ -2,8 +2,7 @@
 const {I, MainPage, LoginPage} = inject();
 Feature('Смена местоположения');
 
-Scenario('Смена местоположения', async () => {
-    //pause();
+Scenario.only('Смена местоположения', async () => {
     I.amOnPage('/');
     await MainPage.setLocationPage('Лондон');
     let arrayMenuItemsYetLondon = await MainPage.checkYetYandexBy();

@@ -9,9 +9,6 @@ module.exports = {
     },
     ChangeLanguage(language){
         I.click(this.GlobalElements.buttonListLanguage);
-        //I.waitForVisible(language, 30);
-        //I.moveCursorTo(language);
-        //I.checkOption(language);
         I.click(language);
         I.click(this.GlobalElements.buttonLanguageSave);
     }
