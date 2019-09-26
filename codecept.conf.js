@@ -1,11 +1,10 @@
 exports.config = {
-    tests: './*.yandex.js',
+    tests: './Tests/*.yandex.js',
     output: './output',
     helpers: {
         Puppeteer: {
             url: 'https://yandex.ru',
             browser: 'chrome',
-            //restart: true,
             windowSize: '1366x768',
             show: true,
             waitForTimeout: 50000,
@@ -16,7 +15,7 @@ exports.config = {
                     '--disable-impl-side-painting',
                     '--disable-gpu',
                     '--ignore-certificate-errors',
-                    //'--headless',
+                    '--headless',
                     '--no-sandbox',
                     '--start-maximized']
             },
@@ -24,12 +23,12 @@ exports.config = {
     },
     include: {
         I: './steps_file.js',
-        MainPage: './MainPage.js',
-        LoginPage: './LoginPage.js',
-        MailPage: './MailPage.js',
-        LanguagePage: './LanguagePage.js',
-        MarketPage: './MarketPage.js',
-        MusicPage: './MusicPage.js'
+        MainPage: './PageObject/MainPage.js',
+        LoginPage: './PageObject/LoginPage.js',
+        MailPage: './PageObject/MailPage.js',
+        LanguagePage: './PageObject/LanguagePage.js',
+        MarketPage: './PageObject/MarketPage.js',
+        MusicPage: './PageObject/MusicPage.js'
     },
     bootstrap: null,
     name: 'test'
