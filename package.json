@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "devDependencies": {
-    "codeceptjs": "^2.3.1",
+    "codeceptjs": "^3.0.0",
     "puppeteer": "^1.20.0",
     "chai": "^4.2.0"
   },
